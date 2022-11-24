@@ -14,4 +14,6 @@ def post_page(request, slug):
 
 
 def index(request):
-    return HttpResponse("A Blog Home Page!")
+    posts = Post.objects.all()
+    ctx = {"posts": posts}
+    return render(request=request, template_name="app_blog/index.html", context=ctx)
