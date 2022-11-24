@@ -74,7 +74,7 @@
     <div class="grid-3">
       {% for post in posts %}
       <!-- card -->
-      <a href="#">
+      <a href="{% url 'app_blog:post_page' post.slug %}">
         <div class="card">
           <div class="post-img">
             <img src="{{ post.image.url }}" alt="" />
@@ -112,7 +112,7 @@
     <div class="grid-3">
       {% for post in posts %}
       <!-- card -->
-      <a href="#">
+      <a href="{% url 'app_blog:post_page' post.slug %}">
         <div class="card">
           <div class="post-img">
             <img src="{{ post.image.url }}" alt="" />
