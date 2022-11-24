@@ -1,4 +1,7 @@
 {
+    "[html]": {
+        "editor.tabSize": 2
+    },
     "python.formatting.provider": "black",
     "emmet.includeLanguages": { "django-html": "html" },
     "files.associations": {
@@ -13,9 +16,6 @@
     },
     "tailwindCSS.includeLanguages": {
         "plaintext": "html"
-    },
-    "[html]": {
-        "editor.tabSize": 2
     },
     "editor.detectIndentation": false,
     "json.schemaDownload.enable": true
