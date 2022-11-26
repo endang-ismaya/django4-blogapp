@@ -44,4 +44,7 @@ class Comment(models.Model):
     email = models.EmailField(max_length=200)
     website = models.CharField(max_length=200)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return f"{self.name}__{self.post.title}"
