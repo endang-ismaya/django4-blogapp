@@ -13,9 +13,7 @@
         <div class="page-top">
           <div class="top flex">
             <div class="page-name">
-              <a href="#" class="learn">
-                <span class="material-icons"> keyboard_return </span> Go back
-              </a>
+              <a href="#" class="learn"> <span class="material-icons"> keyboard_return </span> Go back </a>
               <h1>Blog</h1>
             </div>
           </div>
@@ -31,7 +29,11 @@
               </div>
               <div class="track">
                 <i class="uil uil-users-alt"></i>
-                <p class="view-count">2500+ views</p>
+                <p class="view-count">
+                  <!-- view count -->
+                  {{ post.view_count}} view{{post.view_count | pluralize}}
+                  <!-- view count -->
+                </p>
               </div>
               <div class="track">
                 <form action="" method="POST">
@@ -62,9 +64,7 @@
                 </div>
                 <div class="social-share">
                   <div class="reactions">
-                    <div class="likes">
-                      <i class="uil uil-heart"></i> <span>200</span>
-                    </div>
+                    <div class="likes"><i class="uil uil-heart"></i> <span>200</span></div>
                     <div class="total-comments">
                       <i class="uil uil-comment-alt"></i>
                       <span>10</span>
@@ -102,11 +102,9 @@
                     <div class="comment-sec">
                       <div class="comment">
                         <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Tempora magnam minima harum, dignissimos ipsa
-                          vero sequi ipsam, distinctio quisquam quo cupiditate
-                          sed recusandae expedita quod iste maiores rerum.
-                          Eaque, dignissimos.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam minima harum,
+                          dignissimos ipsa vero sequi ipsam, distinctio quisquam quo cupiditate sed recusandae expedita
+                          quod iste maiores rerum. Eaque, dignissimos.
                         </p>
                       </div>
                       <div class="reply">
@@ -114,10 +112,7 @@
                       </div>
                       <div class="comment-box" id="comment-reply-box">
                         <h3>Reply to post</h3>
-                        <p>
-                          Your email address will not be published. Required
-                          fields are marked<span>*</span>
-                        </p>
+                        <p>Your email address will not be published. Required fields are marked<span>*</span></p>
                         <form method="POST">
                           <textarea
                             name="content"
@@ -129,14 +124,7 @@
                           >
                           </textarea>
                           <div class="grid-3">
-                            <input
-                              type="text"
-                              name="name"
-                              maxlength="200"
-                              placeholder="Name"
-                              required
-                              id="id_name"
-                            />
+                            <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name" />
                             <input
                               type="text"
                               name="email"
@@ -145,18 +133,10 @@
                               required
                               id="id_email"
                             />
-                            <input
-                              type="text"
-                              name="website"
-                              maxlength="200"
-                              placeholder="Website"
-                              id="id_website"
-                            />
+                            <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website" />
                           </div>
 
-                          <button class="btn btn-primary rounded">
-                            Post Reply
-                          </button>
+                          <button class="btn btn-primary rounded">Post Reply</button>
                         </form>
                       </div>
                     </div>
@@ -173,8 +153,8 @@
                       </div>
                       <div class="comment">
                         <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Tempora magnam minima harum, dignissimos
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam minima harum,
+                          dignissimos
                         </p>
                       </div>
                     </div>
@@ -195,11 +175,9 @@
                     <div class="comment-sec">
                       <div class="comment">
                         <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Tempora magnam minima harum, dignissimos ipsa
-                          vero sequi ipsam, distinctio quisquam quo cupiditate
-                          sed recusandae expedita quod iste maiores rerum.
-                          Eaque, dignissimos.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam minima harum,
+                          dignissimos ipsa vero sequi ipsam, distinctio quisquam quo cupiditate sed recusandae expedita
+                          quod iste maiores rerum. Eaque, dignissimos.
                         </p>
                       </div>
                       <div class="reply">
@@ -208,10 +186,7 @@
                     </div>
                     <div class="comment-box" id="comment-reply-box">
                       <h3>Reply to post</h3>
-                      <p>
-                        Your email address will not be published. Required
-                        fields are marked<span>*</span>
-                      </p>
+                      <p>Your email address will not be published. Required fields are marked<span>*</span></p>
                       <form method="POST">
                         <textarea
                           name="content"
@@ -223,34 +198,12 @@
                         >
                         </textarea>
                         <div class="grid-3">
-                          <input
-                            type="text"
-                            name="name"
-                            maxlength="200"
-                            placeholder="Name"
-                            required
-                            id="id_name"
-                          />
-                          <input
-                            type="text"
-                            name="email"
-                            maxlength="200"
-                            placeholder="Email"
-                            required
-                            id="id_email"
-                          />
-                          <input
-                            type="text"
-                            name="website"
-                            maxlength="200"
-                            placeholder="Website"
-                            id="id_website"
-                          />
+                          <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name" />
+                          <input type="text" name="email" maxlength="200" placeholder="Email" required id="id_email" />
+                          <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website" />
                         </div>
 
-                        <button class="btn btn-primary rounded">
-                          Post Reply
-                        </button>
+                        <button class="btn btn-primary rounded">Post Reply</button>
                       </form>
                     </div>
                   </div>
@@ -271,11 +224,9 @@
                     <div class="comment-sec">
                       <div class="comment">
                         <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Tempora magnam minima harum, dignissimos ipsa
-                          vero sequi ipsam, distinctio quisquam quo cupiditate
-                          sed recusandae expedita quod iste maiores rerum.
-                          Eaque, dignissimos.
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam minima harum,
+                          dignissimos ipsa vero sequi ipsam, distinctio quisquam quo cupiditate sed recusandae expedita
+                          quod iste maiores rerum. Eaque, dignissimos.
                         </p>
                       </div>
                       <div class="reply">
@@ -284,10 +235,7 @@
 
                       <div class="comment-box" id="comment-reply-box">
                         <h3>Reply to post</h3>
-                        <p>
-                          Your email address will not be published. Required
-                          fields are marked<span>*</span>
-                        </p>
+                        <p>Your email address will not be published. Required fields are marked<span>*</span></p>
                         <form method="POST">
                           <textarea
                             name="content"
@@ -299,14 +247,7 @@
                           >
                           </textarea>
                           <div class="grid-3">
-                            <input
-                              type="text"
-                              name="name"
-                              maxlength="200"
-                              placeholder="Name"
-                              required
-                              id="id_name"
-                            />
+                            <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name" />
                             <input
                               type="text"
                               name="email"
@@ -315,18 +256,10 @@
                               required
                               id="id_email"
                             />
-                            <input
-                              type="text"
-                              name="website"
-                              maxlength="200"
-                              placeholder="Website"
-                              id="id_website"
-                            />
+                            <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website" />
                           </div>
 
-                          <button class="btn btn-primary rounded">
-                            Post Reply
-                          </button>
+                          <button class="btn btn-primary rounded">Post Reply</button>
                         </form>
                       </div>
                     </div>
@@ -337,10 +270,7 @@
             </div>
             <div class="comment-box">
               <h3>Leave a new comment to this post</h3>
-              <p>
-                Your email address will not be published. Required fields are
-                marked<span>*</span>
-              </p>
+              <p>Your email address will not be published. Required fields are marked<span>*</span></p>
               <form action="">
                 <textarea placeholder="Type your comment...."></textarea>
                 <div class="grid-3">
@@ -365,14 +295,8 @@
               <img src="../images/post.png" alt="" />
             </div>
             <div class="recent-content">
-              <h3>
-                A blog title and other stuffs will add here, also we can
-                incluse.
-              </h3>
-              <a class="learn" href="#"
-                >Learn more
-                <span class="material-icons"> trending_flat </span></a
-              >
+              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
+              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
             </div>
           </div>
           <div class="recent-post">
@@ -380,14 +304,8 @@
               <img src="../images/post.png" alt="" />
             </div>
             <div class="recent-content">
-              <h3>
-                A blog title and other stuffs will add here, also we can
-                incluse.
-              </h3>
-              <a class="learn" href="#"
-                >Learn more
-                <span class="material-icons"> trending_flat </span></a
-              >
+              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
+              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
             </div>
           </div>
           <div class="recent-post">
@@ -395,14 +313,8 @@
               <img src="../images/post.png" alt="" />
             </div>
             <div class="recent-content">
-              <h3>
-                A blog title and other stuffs will add here, also we can
-                incluse.
-              </h3>
-              <a class="learn" href="#"
-                >Learn more
-                <span class="material-icons"> trending_flat </span></a
-              >
+              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
+              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
             </div>
           </div>
         </div>
@@ -417,10 +329,7 @@
                 <div class="tag">Tag name</div>
               </div>
               <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
+                <h3>A blog title and other stuffs will add here, also we can include.</h3>
                 <div class="author">
                   <div class="profile-pic">
                     <img src="../images/author.svg" alt="" />
@@ -443,10 +352,7 @@
                 <div class="tag">Tag name</div>
               </div>
               <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
+                <h3>A blog title and other stuffs will add here, also we can include.</h3>
                 <div class="author">
                   <div class="profile-pic">
                     <img src="../images/author.svg" alt="" />
@@ -464,40 +370,28 @@
         <div class="block">
           <h2 class="title2">Top category</h2>
           <div class="card">
-            <h3>
-              A blog title and other stuffs will add here, lso we can incluse.
-            </h3>
+            <h3>A blog title and other stuffs will add here, lso we can incluse.</h3>
             <p>
-              Lorem ipsum began as scrambled, nonsensical Latin derived from
-              Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+              Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero's 1st-century BC text De Finibus
+              Bonorum et Malorum.
             </p>
-            <a class="learn" href="#"
-              >Learn more <span class="material-icons"> trending_flat </span></a
-            >
+            <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
           </div>
           <div class="card">
-            <h3>
-              A blog title and other stuffs will add here, lso we can incluse.
-            </h3>
+            <h3>A blog title and other stuffs will add here, lso we can incluse.</h3>
             <p>
-              Lorem ipsum began as scrambled, nonsensical Latin derived from
-              Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+              Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero's 1st-century BC text De Finibus
+              Bonorum et Malorum.
             </p>
-            <a class="learn" href="#"
-              >Learn more <span class="material-icons"> trending_flat </span></a
-            >
+            <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
           </div>
           <div class="card">
-            <h3>
-              A blog title and other stuffs will add here, lso we can incluse.
-            </h3>
+            <h3>A blog title and other stuffs will add here, lso we can incluse.</h3>
             <p>
-              Lorem ipsum began as scrambled, nonsensical Latin derived from
-              Cicero's 1st-century BC text De Finibus Bonorum et Malorum.
+              Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero's 1st-century BC text De Finibus
+              Bonorum et Malorum.
             </p>
-            <a class="learn" href="#"
-              >Learn more <span class="material-icons"> trending_flat </span></a
-            >
+            <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
           </div>
         </div>
         <div class="block">

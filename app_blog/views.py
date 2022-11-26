@@ -8,6 +8,11 @@ def post_page(request, slug):
     try:
         post = Post.objects.get(slug=slug)
         tags = post.tags.all()
+
+        # increment view_count
+        post.view_count = post.view_count + 1
+        # save to db
+        post.save()
         ctx = {"post": post, "tags": tags}
         return render(request, "app_blog/post.html", ctx)
     except:
