@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+<!-- load static -->
+{% load static %}
 
 <!-- title -->
 {% block title %} Blog | The Super Blog {% endblock title %}
@@ -93,7 +95,7 @@
                 <div class="user-comment">
                   <div class="author">
                     <div class="profile-pic">
-                      <img src="../images/author.svg" alt="" />
+                      <img src="{% static 'app_blog/images/author.svg' %}" alt="" />
                     </div>
                     <div class="details">
                       <p>{{ comment.name }}</p>
@@ -112,26 +114,17 @@
                         <h3>Reply to post</h3>
                         <p>Your email address will not be published. Required fields are marked<span>*</span></p>
                         <form method="POST">
-                          <textarea
-                            name="content"
-                            cols="40"
-                            rows="10"
-                            placeholder="Type your comment...."
-                            required
-                            id="id_content"
-                          >
-                          </textarea>
+                          {% csrf_token %}
+                          <!-- content -->
+                          {{form.content}}
                           <div class="grid-3">
-                            <input type="text" name="name" maxlength="200" placeholder="Name" required id="id_name" />
-                            <input
-                              type="text"
-                              name="email"
-                              maxlength="200"
-                              placeholder="Email"
-                              required
-                              id="id_email"
-                            />
-                            <input type="text" name="website" maxlength="200" placeholder="Website" id="id_website" />
+                            <input type="hidden" name="parent" value="{{comment.id}}" />
+                            <!-- name -->
+                            {{form.name}}
+                            <!-- email -->
+                            {{form.email}}
+                            <!-- website -->
+                            {{form.website}}
                           </div>
 
                           <button class="btn btn-primary rounded">Post Reply</button>
@@ -139,23 +132,22 @@
                       </div>
                     </div>
 
+                    {% for reply in comment.replies.all %}
                     <div class="public-reply">
                       <div class="author">
                         <div class="profile-pic">
-                          <img src="../images/author.svg" alt="" />
+                          <img src="{% static 'app_blog/images/author.svg' %}" alt="" />
                         </div>
                         <div class="details">
-                          <p>Author name</p>
-                          <small>June 20, 2022</small>
+                          <p>{{reply.name}}</p>
+                          <small>{{reply.date|date}}</small>
                         </div>
                       </div>
                       <div class="comment">
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora magnam minima harum,
-                          dignissimos
-                        </p>
+                        <p>{{reply.content}}</p>
                       </div>
                     </div>
+                    {% endfor %}
                   </div>
                 </div>
                 <!-- comment end-->
@@ -296,17 +288,9 @@
         <div class="block">
           <h2 class="title2">Top Tags</h2>
           <div class="blog-tags">
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
+            {% for tag in tags %}
+            <div class="tag">{{ tag }}</div>
+            {% endfor %}
           </div>
         </div>
       </div>
