@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
+from django.contrib.auth.models import User
+
 
 # Tags
 class Tag(models.Model):
@@ -32,3 +34,14 @@ class Post(models.Model):
         if not self.id:
             self.slug = slugify(self.title)
         return super(Post, self).save(*args, **kwargs)
+
+
+# Comments
+class Comment(models.Model):
+    content = models.TextField()
+    date = models.DateTimeField(auto_now=True)
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    website = models.CharField(max_length=200)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
