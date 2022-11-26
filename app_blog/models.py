@@ -12,7 +12,7 @@ class Tag(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.title)
+            self.slug = slugify(self.name)
         return super(Tag, self).save(*args, **kwargs)
 
 

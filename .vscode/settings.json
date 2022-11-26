@@ -2,6 +2,15 @@
     "[html]": {
         "editor.tabSize": 2
     },
+    "[django-html]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": true,
+            "strings": true
+        },
+        "editor.tabSize": 2
+    },
+    // "editor.tabSize": 2,
     "python.formatting.provider": "black",
     "emmet.includeLanguages": { "django-html": "html" },
     "files.associations": {

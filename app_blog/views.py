@@ -7,7 +7,8 @@ def post_page(request, slug):
 
     try:
         post = Post.objects.get(slug=slug)
-        ctx = {"post": post}
+        tags = post.tags.all()
+        ctx = {"post": post, "tags": tags}
         return render(request, "app_blog/post.html", ctx)
     except:
         return HttpResponse(f"Post '{slug}' not found")
