@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -21,6 +22,10 @@ def post_page(request, slug):
                 )  # not saving to db, get the instance of comment
                 comment.post = post
                 comment.save()
+
+                return HttpResponseRedirect(
+                    reverse("app_blog:post_page", kwargs={"slug": slug})
+                )
 
         # increment view_count
         post.view_count = post.view_count + 1
