@@ -2,6 +2,22 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 
+# Profile
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_image = models.ImageField(null=True, blank=True, upload_to="images/")
+    slug = models.SlugField(max_length=200, unique=True)
+    bio = models.CharField(max_length=200)
+
+    def __str__(self) -> str:
+        return self.user.first_name
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(f"{self.user.username}-{self.user.id}")
+        return super(Profile, self).save(*args, **kwargs)
+
+
 # Subscribe
 class Subsribe(models.Model):
     email = models.EmailField(max_length=100)
@@ -32,6 +48,7 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag, blank=True, related_name="post")
     view_count = models.IntegerField(default=0)
     is_featured = models.BooleanField(default=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title

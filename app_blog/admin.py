@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Tag, Comment
+from .models import Post, Tag, Comment, Profile
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -16,6 +16,17 @@ class PostAdmin(admin.ModelAdmin):
     fields = ("title", "content", "image", "tags", "view_count", "is_featured")
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = (
+        "user",
+        "profile_image",
+        "slug",
+        "bio",
+    )
+    fields = ("user", "profile_image", "bio")
+
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Tag)
 admin.site.register(Comment)
+admin.site.register(Profile, ProfileAdmin)
