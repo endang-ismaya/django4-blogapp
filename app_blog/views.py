@@ -57,6 +57,8 @@ def post_page(request, slug):
 
 
 def index(request):
-    posts = Post.objects.all()
-    ctx = {"posts": posts}
+    # posts = Post.objects.all()
+    top_posts = Post.objects.all().order_by("-view_count")[:3]
+    recent_posts = Post.objects.all().order_by("-last_updated")[:3]
+    ctx = {"top_posts": top_posts, "recent_posts": recent_posts}
     return render(request=request, template_name="app_blog/index.html", context=ctx)
