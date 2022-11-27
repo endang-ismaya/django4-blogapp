@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Post, Comment
+from .models import Post, Comment, Tag
 from .forms import CommentForm, SubscribeForm
 
 # Create your views here.
@@ -86,5 +86,11 @@ def index(request):
 
 
 def tag_page(request, slug):
-    ctx = {}
-    return render(request, "app_blog/tag.html", ctx)
+    try:
+        tag = Tag.objects.get(slug=slug)
+        top_posts = Post.objects.filter(tags__in=[tag.id]).order_by("-view_count")[:2]
+
+        ctx = {"tag": tag, "top_posts": top_posts}
+        return render(request, "app_blog/tag.html", ctx)
+    except:
+        return HttpResponse(f"Tag '{slug}' not found")
