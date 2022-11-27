@@ -33,7 +33,7 @@
             <div class="grid-2 blog">
               {% for post in top_posts %}
               <!-- card -->
-              <a href="#">
+              <a href="{% url 'app_blog:post_page' post.slug %}">
                 <div class="card">
                   <div class="post-img">
                     <img src="{{post.image.url}}" alt="" />
@@ -60,73 +60,31 @@
         </section>
         <section class="sp">
           <div class="container">
-            <h1 class="sec-title">Treandy</h1>
+            <h1 class="sec-title">Trendy</h1>
             <div class="grid-3 blog-grid">
+              {% for post in recent_posts %}
               <!-- card -->
-              <a href="#">
+              <a href="{% url 'app_blog:post_page' post.slug %}">
                 <div class="card">
                   <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
+                    <img src="{{post.image.url}}" alt="" />
+                    <div class="tag">{{post.tags.all.0.name}}</div>
                   </div>
                   <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
+                    <h3>{{post.title}}</h3>
                     <div class="author">
                       <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
+                        <img src="{% static 'app_blog/images/author.svg' %}" alt="" />
                       </div>
                       <div class="details">
                         <p>Author name</p>
-                        <small>June 20, 2022</small>
+                        <small>{{post.last_updated | date}}</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </a>
-              <!-- card end-->
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
+              {% endfor %}
               <!-- card end-->
             </div>
             <center>
@@ -139,74 +97,32 @@
         </section>
         <section class="sp">
           <div class="container">
-            <h1 class="sec-title">Featueal</h1>
+            <h1 class="sec-title">Featured</h1>
             <div class="grid-3 blog-grid">
+              {% for post in featured_posts %}
               <!-- card -->
               <a href="#">
                 <div class="card">
                   <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
+                    <img src="{{post.image.url}}" alt="" />
+                    <div class="tag">{{post.tags.all.0.name}}</div>
                   </div>
                   <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
+                    <h3>{{post.title}}</h3>
                     <div class="author">
                       <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
+                        <img src="{% static 'app_blog/images/author.svg' %}" alt="" />
                       </div>
                       <div class="details">
                         <p>Author name</p>
-                        <small>June 20, 2022</small>
+                        <small>{{post.last_updated | date}}</small>
                       </div>
                     </div>
                   </div>
                 </div>
               </a>
               <!-- card end-->
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
-              <!-- card -->
-              <a href="#">
-                <div class="card">
-                  <div class="post-img">
-                    <img src="../images/post.png" alt="" />
-                    <div class="tag">Tag name</div>
-                  </div>
-                  <div class="card-content">
-                    <h3>A blog title and other stuffs will add here, also we can include.</h3>
-                    <div class="author">
-                      <div class="profile-pic">
-                        <img src="../images/author.svg" alt="" />
-                      </div>
-                      <div class="details">
-                        <p>Author name</p>
-                        <small>June 20, 2022</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              <!-- card end-->
+              {% endfor %}
             </div>
             <center>
               <button class="btn btn-primary rounded view">
@@ -222,87 +138,15 @@
       <!-- right layout -->
       <div class="right">
         <div class="block">
-          <h2 class="title2">Top Tags</h2>
+          <h2 class="title2">More Tags</h2>
           <div class="blog-tags">
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-          </div>
-        </div>
-        <div class="block">
-          <h2 class="title2">Other Tags</h2>
-          <div class="blog-tags">
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
-            <div class="tag">Tag content</div>
-            <div class="tag">Tag</div>
+            {% for tag in tags %}
+            <a class="tag" href="{% url 'app_blog:tag_page' tag.slug %}">{{tag}}</a>
+            {% endfor %}
           </div>
         </div>
       </div>
       <!-- right layout end -->
-    </div>
-  </div>
-  <div class="container">
-    <div class="grid-4">
-      <div class="logo f-logo">
-        <i class="fa-brands fa-blogger"></i>
-      </div>
-      <div class="link">
-        <h2>Quick link</h2>
-        <div class="q-link">
-          <a href="#">Home</a>
-          <a href="#">Blog</a>
-          <a href="#">Unsubscribe</a>
-        </div>
-      </div>
-      <div class="link">
-        <h2>Top cetagory</h2>
-        <div class="q-link">
-          <a href="#">Home</a>
-          <a href="#">Blog</a>
-          <a href="#">Unsubscribe</a>
-        </div>
-      </div>
-      <div class="news-signup">
-        <h2>Subscribe</h2>
-        <div class="newsletter">
-          <form method="POST">
-            <input type="email" name="email" maxlength="100" placeholder="Enter your email" required="" id="id_email" />
-            <button class="btn btn-primary">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="share">
-      <div class="social">
-        <a href="#">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <a href="#">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="#">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <a href="#">
-          <i class="fa-brands fa-twitter"></i>
-        </a>
-      </div>
     </div>
   </div>
   {% endblock content %}

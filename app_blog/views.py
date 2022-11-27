@@ -88,9 +88,22 @@ def index(request):
 def tag_page(request, slug):
     try:
         tag = Tag.objects.get(slug=slug)
+        tags = Tag.objects.all()
         top_posts = Post.objects.filter(tags__in=[tag.id]).order_by("-view_count")[:2]
+        recent_posts = Post.objects.filter(tags__in=[tag.id]).order_by("-last_updated")[
+            :3
+        ]
+        featured_posts = Post.objects.filter(tags__in=[tag.id]).filter(
+            is_featured=True
+        )[:3]
 
-        ctx = {"tag": tag, "top_posts": top_posts}
+        ctx = {
+            "tag": tag,
+            "tags": tags,
+            "top_posts": top_posts,
+            "recent_posts": recent_posts,
+            "featured_posts": featured_posts,
+        }
         return render(request, "app_blog/tag.html", ctx)
     except:
         return HttpResponse(f"Tag '{slug}' not found")
