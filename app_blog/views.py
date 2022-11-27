@@ -83,3 +83,8 @@ def index(request):
         "featured_post": featured_post,
     }
     return render(request=request, template_name="app_blog/index.html", context=ctx)
+
+
+def tag_page(request, slug):
+    ctx = {}
+    return render(request, "app_blog/tag.html", ctx)
