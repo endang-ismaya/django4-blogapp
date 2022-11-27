@@ -5,6 +5,7 @@ from .models import Post, Tag, Comment, Profile
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         "title",
+        "author",
         "image",
         "view_count",
         "slug",
@@ -13,7 +14,15 @@ class PostAdmin(admin.ModelAdmin):
     )
     search_fields = ("title",)
     search_help_text = "Write in your query and hit enter!"
-    fields = ("title", "content", "image", "tags", "view_count", "is_featured")
+    fields = (
+        "title",
+        "author",
+        "content",
+        "image",
+        "tags",
+        "view_count",
+        "is_featured",
+    )
 
 
 class ProfileAdmin(admin.ModelAdmin):

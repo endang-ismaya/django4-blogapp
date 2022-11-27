@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Post, Comment, Tag
+from .models import Post, Comment, Tag, Profile
 from .forms import CommentForm, SubscribeForm
 
 # Create your views here.
@@ -107,3 +107,25 @@ def tag_page(request, slug):
         return render(request, "app_blog/tag.html", ctx)
     except:
         return HttpResponse(f"Tag '{slug}' not found")
+
+
+def author_page(request, slug):
+    try:
+        profile = Profile.objects.get(slug=slug)
+        top_posts = Post.objects.filter(author=profile.user).order_by("-view_count")[:2]
+        recent_posts = Post.objects.filter(author=profile.user).order_by(
+            "-last_updated"
+        )[:3]
+
+        featured_posts = Post.objects.filter(is_featured=True, author=profile.user)[:3]
+
+        ctx = {
+            "profile": profile,
+            "top_posts": top_posts,
+            "recent_posts": recent_posts,
+            "featured_posts": featured_posts,
+        }
+        return render(request, "app_blog/author.html", ctx)
+
+    except:
+        return HttpResponse(f"Author '{slug}' not found")
