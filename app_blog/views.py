@@ -134,3 +134,14 @@ def author_page(request, slug):
 
     except:
         return HttpResponse(f"Author '{slug}' not found")
+
+
+def search_posts(request):
+    search_query = ""
+
+    if request.GET.get("q"):
+        search_query = request.GET.get("q")
+
+    posts = Post.objects.filter(title__icontains=search_query)
+    ctx = {"posts": posts, "search_query": search_query}
+    return render(request, "app_blog/search.html", ctx)
