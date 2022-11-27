@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Post, Comment, Tag, Profile
+from django.contrib.auth.models import User
+from django.db.models import Count
 from .forms import CommentForm, SubscribeForm
+from .models import Post, Comment, Tag, Profile
+
 
 # Create your views here.
 def post_page(request, slug):
@@ -118,12 +121,14 @@ def author_page(request, slug):
         )[:3]
 
         featured_posts = Post.objects.filter(is_featured=True, author=profile.user)[:3]
+        top_authors = User.objects.annotate(number=Count("post")).order_by("number")
 
         ctx = {
             "profile": profile,
             "top_posts": top_posts,
             "recent_posts": recent_posts,
             "featured_posts": featured_posts,
+            "top_authors": top_authors,
         }
         return render(request, "app_blog/author.html", ctx)
 

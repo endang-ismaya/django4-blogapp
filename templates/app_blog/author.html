@@ -54,6 +54,8 @@
                 </div>
               </a>
               <!-- card end-->
+              {% empty %}
+              <p>No post yet.</p>
               {% endfor %}
             </div>
           </div>
@@ -85,6 +87,8 @@
                 </div>
               </a>
               <!-- card end-->
+              {% empty %}
+              <p>No post yet.</p>
               {% endfor %}
             </div>
             <center>
@@ -122,6 +126,8 @@
                 </div>
               </a>
               <!-- card end-->
+              {% empty %}
+              <p>No post yet.</p>
               {% endfor %}
             </div>
             <center>
@@ -139,64 +145,20 @@
       <div class="right">
         <div class="block">
           <h2 class="title2">Top Authors</h2>
+          {% for author in top_authors %}
           <div class="recent-post other-author">
             <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
+              <img src="{{author.profile.profile_image.url}}" alt="" />
             </div>
             <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
+              <h3>{{author.first_name}}</h3>
+              <p>{{author.profile.bio}}</p>
+              <a class="learn" href="{% url 'app_blog:author_page' author.profile.slug %}">
+                Learn more <span class="material-icons"> trending_flat </span>
+              </a>
             </div>
           </div>
-          <div class="recent-post other-author">
-            <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
-            </div>
-            <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
-            </div>
-          </div>
-          <div class="recent-post other-author">
-            <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
-            </div>
-            <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="block">
-          <h2 class="title2">Other Authors</h2>
-          <div class="recent-post other-author">
-            <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
-            </div>
-            <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
-            </div>
-          </div>
-          <div class="recent-post other-author">
-            <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
-            </div>
-            <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
-            </div>
-          </div>
-          <div class="recent-post other-author">
-            <div class="rounded-img">
-              <img src="../images/post.png" alt="" />
-            </div>
-            <div class="recent-content">
-              <h3>A blog title and other stuffs will add here, also we can incluse.</h3>
-              <a class="learn" href="#">Learn more <span class="material-icons"> trending_flat </span></a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
       <!-- right layout end -->
