@@ -2,6 +2,11 @@ from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 
+# Subscribe
+class Subsribe(models.Model):
+    email = models.EmailField(max_length=100)
+    date = models.DateTimeField(auto_now=True)
+
 
 # Tags
 class Tag(models.Model):
@@ -26,6 +31,7 @@ class Post(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to="images/")
     tags = models.ManyToManyField(Tag, blank=True, related_name="post")
     view_count = models.IntegerField(default=0)
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.title

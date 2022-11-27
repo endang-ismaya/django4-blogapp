@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, SubscribeForm
 
 # Create your views here.
 def post_page(request, slug):
@@ -60,5 +60,26 @@ def index(request):
     # posts = Post.objects.all()
     top_posts = Post.objects.all().order_by("-view_count")[:3]
     recent_posts = Post.objects.all().order_by("-last_updated")[:3]
-    ctx = {"top_posts": top_posts, "recent_posts": recent_posts}
+    featured_posts = Post.objects.filter(is_featured=True)
+    featured_post = None
+    subscribe_form = SubscribeForm()
+    subscribe_successful = None
+
+    if featured_posts:
+        featured_post = featured_posts[0]
+
+    if request.POST:
+        subscribe_form = SubscribeForm(request.POST)
+        if subscribe_form.is_valid():
+            subscribe_form.save()
+            subscribe_successful = "Subscribed Successfully"
+            subscribe_form = SubscribeForm()
+
+    ctx = {
+        "top_posts": top_posts,
+        "recent_posts": recent_posts,
+        "subscribe_form": subscribe_form,
+        "subscribe_successful": subscribe_successful,
+        "featured_post": featured_post,
+    }
     return render(request=request, template_name="app_blog/index.html", context=ctx)
