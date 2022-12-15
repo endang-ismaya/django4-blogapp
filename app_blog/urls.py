@@ -1,4 +1,5 @@
 from django.urls import path
+
 from . import views
 
 app_name = "app_blog"
@@ -10,3 +11,4 @@ urlpatterns = [
     path("authors/<slug:slug>", views.author_page, name="author_page"),
     path("search/", views.search_posts, name="search"),
 ]
+

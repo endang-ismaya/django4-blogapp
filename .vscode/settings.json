@@ -12,6 +12,10 @@
     },
     // "editor.tabSize": 2,
     "python.formatting.provider": "black",
+    "python.analysis.stubPath": "",
+    "python.analysis.indexing": true,
+    // "python.analysis.autoImportCompletions": true,
+    // "python.analysis.typeCheckingMode": "strict",
     "emmet.includeLanguages": { "django-html": "html" },
     "files.associations": {
         "**/*.html": "html",
